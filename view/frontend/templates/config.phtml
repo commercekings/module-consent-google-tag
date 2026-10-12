@@ -1,0 +1,10 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+/** @var \CommerceKings\ConsentGoogleTag\ViewModel\Config $viewModel */
+$viewModel = $block->getViewModel();
+?>
+<?php if ($viewModel->isConsentModeActive()): ?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $viewModel->getDefaultsScript(), false) ?>
+<?php endif; ?>
+<script type="application/json" id="commercekings-consent-google-tag-config"><?= /* @noEscape */ $viewModel->getConfigJson() ?></script>

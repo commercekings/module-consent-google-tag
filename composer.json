@@ -1,0 +1,33 @@
+{
+    "name": "commercekings/module-consent-google-tag",
+    "description": "Consent for Magento's native Google tags (GA4, Universal Analytics, Google Ads via gtag) with Google Consent Mode v2, independent of the cookie banner.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CommerceKings"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0",
+        "magento/framework": "*",
+        "commercekings/module-consent": "^0.1"
+    },
+    "suggest": {
+        "magento/module-google-gtag": "Native GA4 and Google Ads (gtag) supported by this module",
+        "magento/module-google-analytics": "Legacy Universal Analytics integration supported by this module"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "CommerceKings\\ConsentGoogleTag\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
+    }
+}

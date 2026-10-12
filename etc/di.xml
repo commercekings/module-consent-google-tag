@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Magento's own Google settings (Stores > Configuration > Sales > Google API) decide which purposes exist -->
+    <type name="CommerceKings\Consent\Model\PurposePool">
+        <arguments>
+            <argument name="purposes" xsi:type="array">
+                <item name="google_analytics" xsi:type="array">
+                    <item name="label" xsi:type="string">Google Analytics</item>
+                    <item name="terms_revision" xsi:type="string">1</item>
+                    <!-- shown in the Analytics category of the default banner categories -->
+                    <item name="category" xsi:type="string">analytics</item>
+                    <!-- GA works from the banner's cookie alone: recording is the shop's choice (admin, default: not recorded) -->
+                    <item name="record" xsi:type="string">optional</item>
+                    <!-- shown in the banner only while Magento's Google Analytics is on -->
+                    <item name="active_if" xsi:type="array">
+                        <item name="google_analytics" xsi:type="string">google/analytics/active</item>
+                        <item name="google_analytics4" xsi:type="string">google/gtag/analytics4/active</item>
+                    </item>
+                    <item name="cookies" xsi:type="array">
+                        <item name="ga" xsi:type="string">^_ga</item>
+                        <item name="gid" xsi:type="string">^_gid</item>
+                        <item name="gat" xsi:type="string">^_gat</item>
+                    </item>
+                </item>
+                <item name="google_ads" xsi:type="array">
+                    <item name="label" xsi:type="string">Google Ads</item>
+                    <item name="terms_revision" xsi:type="string">1</item>
+                    <item name="category" xsi:type="string">marketing</item>
+                    <item name="record" xsi:type="string">optional</item>
+                    <!-- shown in the banner only while Magento's Google Ads (gtag) conversion tracking is on -->
+                    <item name="active_if" xsi:type="array">
+                        <item name="google_ads" xsi:type="string">google/gtag/adwords/active</item>
+                    </item>
+                    <item name="cookies" xsi:type="array">
+                        <item name="google_click" xsi:type="string">^_gcl_</item>
+                        <item name="google_ads" xsi:type="string">^_gac_</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Google Consent Mode: signal => the purpose that grants it; a signal whose purpose is off is "denied" -->
+    <type name="CommerceKings\ConsentGoogleTag\ViewModel\Config">
+        <arguments>
+            <argument name="signals" xsi:type="array">
+                <item name="analytics_storage" xsi:type="string">google_analytics</item>
+                <item name="ad_storage" xsi:type="string">google_ads</item>
+                <item name="ad_user_data" xsi:type="string">google_ads</item>
+                <item name="ad_personalization" xsi:type="string">google_ads</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
