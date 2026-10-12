@@ -1,5 +1,10 @@
 # CommerceKings_ConsentGoogleTag
 
+Install in a Magento project with `composer require commercekings/module-consent-google-tag:^0.1` after the first
+release is published. Enable the Magento module(s) listed below and run `bin/magento setup:upgrade`.
+For development/tests use source checkouts (`--prefer-source`); release archives omit `Test/`.
+
+
 Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. No settings of its own: everything is configured where Magento has it – **Stores > Configuration > Sales > Google API**. Depends on `CommerceKings_Consent`; works with any consent source.
 
 | Magento setting | Purpose | Loader held until | Consent Mode signals |

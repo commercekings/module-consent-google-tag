@@ -19,7 +19,7 @@ class ConfigTest extends TestCase
 
     private function config(array $flags): Config
     {
-        $scope = $this->createMock(ScopeConfigInterface::class);
+        $scope = $this->createStub(ScopeConfigInterface::class);
         $scope->method('isSetFlag')->willReturnCallback(fn ($path) => $flags[$path] ?? false);
         return new Config(new PurposePool([
             'google_analytics' => ['active_if' => ['ga4' => 'google/gtag/analytics4/active'], 'cookies' => ['ga' => '^_ga']],
