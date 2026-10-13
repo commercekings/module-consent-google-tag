@@ -37,5 +37,10 @@
             "/.gitignore",
             "/.gitattributes"
         ]
+    },
+    "homepage": "https://github.com/commercekings/module-consent-google-tag",
+    "support": {
+        "issues": "https://github.com/commercekings/module-consent-google-tag/issues",
+        "source": "https://github.com/commercekings/module-consent-google-tag"
     }
 }
