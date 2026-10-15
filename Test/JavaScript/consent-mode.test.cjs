@@ -226,3 +226,48 @@ for (const blocked of ['access', 'removal']) {
     });
 }
 
+test('malformed Ads cookie patterns cannot interrupt denial, valid storage cleanup or reload', async () => {
+    const b = browser(config({marketingCookies: ['[', '^_gcl_', '(']}));
+    const consent = purposes({google_ads: true});
+    const mode = load(b, 'module-consent-google-tag/view/frontend/web/js/consent-mode.js', {
+        'CommerceKings_Consent/js/consent/provider': consent
+    });
+    let reloads = 0, loads = 0;
+    b.context.location.reload = () => reloads++;
+    const ads = load(b, 'module-consent-google-tag/view/frontend/web/js/ads.js', {
+        'CommerceKings_Consent/js/consent/provider': consent,
+        'CommerceKings_ConsentGoogleTag/js/consent-mode': mode
+    });
+    ads.whenAllowed(() => loads++, {});
+    b.cookies.set('_gcl_au', 'tracking');
+    b.cookies.set('_ga', 'unrelated');
+    b.context.localStorage.setItem('_gcl_ls', 'ad-click');
+    b.context.localStorage.setItem('shop-preference', 'keep');
+    assert.doesNotThrow(() => consent.change('google_ads', false));
+    assert.equal(updates(b).at(-1).ad_storage, 'denied');
+    assert.deepEqual([...b.cookies.keys()], ['_ga']);
+    assert.equal(b.context.localStorage.getItem('_gcl_ls'), null);
+    assert.equal(b.context.localStorage.getItem('shop-preference'), 'keep');
+    await new Promise(resolve => setTimeout(resolve, 5));
+    assert.equal(reloads, 1);
+    assert.equal(loads, 1);
+});
+
+test('malformed Ads patterns on denied startup still clear valid storage without loading a tag', () => {
+    const b = browser(config({marketingCookies: ['[', '^_gcl_']}));
+    b.cookies.set('_gcl_au', 'tracking');
+    b.cookies.set('PHPSESSID', 'keep');
+    b.context.localStorage.setItem('_gcl_ls', 'ad-click');
+    let loads = 0, reloads = 0;
+    b.context.location.reload = () => reloads++;
+    const ads = load(b, 'module-consent-google-tag/view/frontend/web/js/ads.js', {
+        'CommerceKings_Consent/js/consent/provider': purposes(),
+        'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}}
+    });
+    ads.whenAllowed(() => loads++, {});
+    assert.deepEqual([...b.cookies.keys()], ['PHPSESSID']);
+    assert.equal(b.context.localStorage.getItem('_gcl_ls'), null);
+    assert.equal(loads, 0);
+    assert.equal(reloads, 0);
+});
+

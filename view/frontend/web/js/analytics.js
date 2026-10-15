@@ -19,7 +19,15 @@ define([
     function eraseCookies() {
         var parts = location.hostname.split('.'),
             domains = [''],
-            patterns = (settings.cookies || []).map(function (pattern) { return new RegExp(pattern); });
+            patterns = [];
+
+        (settings.cookies || []).forEach(function (pattern) {
+            try {
+                patterns.push(new RegExp(pattern));
+            } catch (e) {
+                // One invalid custom pattern must not interrupt withdrawal or the remaining cleanup.
+            }
+        });
 
         for (var i = 0; i < parts.length - 1; i++) {
             domains.push(parts.slice(i).join('.'), '.' + parts.slice(i).join('.'));

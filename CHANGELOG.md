@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Ignore malformed custom cookie patterns individually so valid cleanup, Analytics disable flags and Ads withdrawal reload still run; cover denied startup and withdrawal with regression tests.
 - Apply Analytics disable flags before Consent Mode updates and clear Ads `_gcl_ls` local storage on withdrawal, with ordering and storage regression tests.
 - Consent gates for Magento's native Google Analytics and Google Ads tags, including Consent Mode v2.
 - Prepare Composer metadata, Magento dependency bounds and source/distribution packaging for the first public release.

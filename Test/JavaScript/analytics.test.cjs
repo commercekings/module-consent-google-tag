@@ -2,8 +2,8 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {browser, load, provider} = require('../../../module-consent/Test/JavaScript/harness.cjs');
 
-function fixture(allowed = false) {
-    const b = browser({'commercekings-consent-google-tag-config': {cookies: ['^_ga', '^_gid', '^_gat']}});
+function fixture(allowed = false, cookies = ['^_ga', '^_gid', '^_gat']) {
+    const b = browser({'commercekings-consent-google-tag-config': {cookies}});
     const consent = provider(allowed);
     const analytics = load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {
         'CommerceKings_Consent/js/consent/provider': consent,
@@ -54,6 +54,29 @@ test('cleans leftovers on a page without a native loader and without a banner', 
     b.cookies.set('_ga', 'old');
     load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {'CommerceKings_Consent/js/consent/provider': provider(), 'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}, onBeforeUpdate() {}}});
     assert.equal(b.cookies.has('_ga'), false);
+});
+
+test('malformed cookie patterns cannot interrupt Analytics withdrawal or valid cookie cleanup', () => {
+    const {b, consent, mixin} = fixture(true, ['[', '^_ga', '(']);
+    let loads = 0;
+    mixin(() => loads++)({pageTrackingData: {measurementId: 'G-TEST'}});
+    b.cookies.set('_ga_TEST', 'tracking');
+    b.cookies.set('PHPSESSID', 'keep');
+    assert.doesNotThrow(() => consent.change(false, 'google_analytics'));
+    assert.equal(b.context['ga-disable-G-TEST'], true);
+    assert.deepEqual([...b.cookies.keys()], ['PHPSESSID']);
+    assert.equal(loads, 1);
+});
+
+test('malformed patterns on denied startup do not load Analytics or preserve valid matching cookies', () => {
+    const b = browser({'commercekings-consent-google-tag-config': {cookies: ['[', '^_ga']}});
+    b.cookies.set('_ga', 'old');
+    b.cookies.set('cc_cookie', 'choice');
+    assert.doesNotThrow(() => load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {
+        'CommerceKings_Consent/js/consent/provider': provider(),
+        'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}, onBeforeUpdate() {}}
+    }));
+    assert.deepEqual([...b.cookies.keys()], ['cc_cookie']);
 });
 
 // Magento's own loader: from the Magento root (or MAGENTO_ROOT); skipped where Magento is not installed

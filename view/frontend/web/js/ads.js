@@ -19,7 +19,15 @@ define([
     function eraseStorage() {
         var parts = location.hostname.split('.'),
             domains = [''],
-            patterns = (settings.marketingCookies || []).map(function (pattern) { return new RegExp(pattern); });
+            patterns = [];
+
+        (settings.marketingCookies || []).forEach(function (pattern) {
+            try {
+                patterns.push(new RegExp(pattern));
+            } catch (e) {
+                // One invalid custom pattern must not prevent storage cleanup or stopping the loaded tag.
+            }
+        });
 
         for (var i = 0; i < parts.length - 1; i++) {
             domains.push(parts.slice(i).join('.'), '.' + parts.slice(i).join('.'));
