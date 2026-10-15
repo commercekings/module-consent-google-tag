@@ -1,7 +1,7 @@
 /**
  * Magento's Google Ads (gtag) conversion loader under the "google_ads" purpose: held until it is
  * allowed, called once per configuration. While it is not allowed, Google Ads' first-party cookies
- * are deleted. Withdrawn after the tag ran on this page: the page reloads - Google Ads has no switch
+ * and _gcl_ls local-storage entry are deleted. Withdrawn after the tag ran: the page reloads - Ads has no switch
  * that stops a loaded tag (Consent Mode "denied" still allows cookieless pings), the next page does not
  * load it. A withdrawal not yet acknowledged by the server is still sent from the next page.
  */
@@ -16,7 +16,7 @@ define([
         element = document.getElementById('commercekings-consent-google-tag-config'),
         settings = element ? JSON.parse(element.textContent || '{}') : {};
 
-    function eraseCookies() {
+    function eraseStorage() {
         var parts = location.hostname.split('.'),
             domains = [''],
             patterns = (settings.marketingCookies || []).map(function (pattern) { return new RegExp(pattern); });
@@ -32,11 +32,16 @@ define([
                 });
             }
         });
+        try {
+            window.localStorage.removeItem('_gcl_ls');
+        } catch (e) {
+            // Browser privacy settings may block storage access; cookie cleanup and tag stopping still apply.
+        }
     }
 
     function applyChoice() {
         if (!consent.hasConsent('google_ads')) {
-            eraseCookies();
+            eraseStorage();
             if (running) {
                 running = false;
                 // after the source has saved the choice that triggered this

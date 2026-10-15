@@ -34,7 +34,7 @@ define([
         });
     }
 
-    function applyChoice() {
+    function applyDisableFlags() {
         // Re-read the source: a grant response may arrive after the visitor already withdrew.
         var allowed = consent.hasConsent('google_analytics');
         (window.dataLayer || []).forEach(function (entry) {
@@ -45,6 +45,11 @@ define([
         ids.forEach(function (id) {
             window['ga-disable-' + id] = !allowed;
         });
+        return allowed;
+    }
+
+    function applyChoice() {
+        var allowed = applyDisableFlags();
         if (!allowed) {
             eraseCookies();
             return;
@@ -60,6 +65,8 @@ define([
         });
     }
 
+    // Another purpose can publish a combined choice before our own onChange callback runs.
+    consentMode.onBeforeUpdate(applyDisableFlags);
     consent.onChange('google_analytics', applyChoice);
     applyChoice();
 

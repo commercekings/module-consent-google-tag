@@ -10,6 +10,7 @@ define(['CommerceKings_Consent/js/consent/provider'], function (consent) {
     var element = document.getElementById('commercekings-consent-google-tag-config'),
         settings = element ? JSON.parse(element.textContent || '{}') : {},
         signals = settings.signals || {},
+        beforeUpdate = [],
         last;
 
     function gtag() {
@@ -29,6 +30,8 @@ define(['CommerceKings_Consent/js/consent/provider'], function (consent) {
         var current = state(),
             key = JSON.stringify(current);
         if (key !== last) {
+            // Apply local tracking guards before a loaded tag can process the update.
+            beforeUpdate.forEach(function (callback) { callback(); });
             last = key;
             gtag('consent', 'update', current);
         }
@@ -44,5 +47,8 @@ define(['CommerceKings_Consent/js/consent/provider'], function (consent) {
         .forEach(function (purpose) { consent.onChange(purpose, sync); });
     sync();
 
-    return {sync: sync};
+    return {
+        sync: sync,
+        onBeforeUpdate: function (callback) { beforeUpdate.push(callback); }
+    };
 });

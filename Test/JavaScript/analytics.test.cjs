@@ -7,7 +7,7 @@ function fixture(allowed = false) {
     const consent = provider(allowed);
     const analytics = load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {
         'CommerceKings_Consent/js/consent/provider': consent,
-        'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}}
+        'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}, onBeforeUpdate() {}}
     });
     const mixin = load(b, 'module-consent-google-tag/view/frontend/web/js/ga-mixin.js', {
         'CommerceKings_ConsentGoogleTag/js/analytics': analytics
@@ -52,7 +52,7 @@ test('withdrawal disables all known GA4/UA ids and cleans tracking cookies witho
 test('cleans leftovers on a page without a native loader and without a banner', () => {
     const b = browser({'commercekings-consent-google-tag-config': {cookies: ['^_ga']}});
     b.cookies.set('_ga', 'old');
-    load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {'CommerceKings_Consent/js/consent/provider': provider(), 'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}}});
+    load(b, 'module-consent-google-tag/view/frontend/web/js/analytics.js', {'CommerceKings_Consent/js/consent/provider': provider(), 'CommerceKings_ConsentGoogleTag/js/consent-mode': {sync() {}, onBeforeUpdate() {}}});
     assert.equal(b.cookies.has('_ga'), false);
 });
 
