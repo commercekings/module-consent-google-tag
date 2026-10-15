@@ -1,6 +1,6 @@
 # CommerceKings_ConsentGoogleTag
 
-**Development status:** preparing the first public release.
+**Development status:** first-release feature scope frozen; polishing and verification remain before publication.
 
 Install in a Magento project with `composer require commercekings/module-consent-google-tag:^0.1` after the first
 release is published. Then enable its modules:
