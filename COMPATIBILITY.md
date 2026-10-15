@@ -9,7 +9,7 @@ combination has passed runtime testing.
 | 2.4.9 | 8.5 | Passed locally: Composer, PHP lint, DI compilation and package unit tests |
 | Other Magento releases | 8.1–8.4 | Unverified; use a matching Magento dependency set and services |
 
-The five-package sandbox also checks consent mapping against temporary database tables,
+The shared sandbox also checks consent mapping against temporary database tables,
 the JavaScript lifecycle, and native Vanilla consent choices, add-to-cart and checkout in
 a browser. Its database is MariaDB 11.8. These checks do not certify other themes, third-party
 tracking scripts, checkout customizations or Adobe Commerce-specific features.

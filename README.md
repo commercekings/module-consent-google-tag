@@ -6,7 +6,7 @@ Install in a Magento project with `composer require commercekings/module-consent
 release is published. Then enable its modules:
 
 ```sh
-bin/magento module:enable CommerceKings_Consent CommerceKings_ConsentGoogleTag
+bin/magento module:enable CommerceKings_Core CommerceKings_Consent CommerceKings_ConsentGoogleTag
 bin/magento setup:upgrade
 bin/magento cache:clean
 ```
@@ -42,7 +42,7 @@ Both are declared in `etc/di.xml` – one purpose per integration, so each has i
 ## Setup
 
 ```sh
-bin/magento module:enable CommerceKings_Consent CommerceKings_ConsentGoogleTag
+bin/magento module:enable CommerceKings_Core CommerceKings_Consent CommerceKings_ConsentGoogleTag
 bin/magento setup:upgrade
 ```
 
