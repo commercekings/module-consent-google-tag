@@ -2,6 +2,8 @@
 
 Works with Magento 2.4+ · Luma and Hyvä · PHP 8.1–8.5
 
+<sub>Built by [CommerceKings](https://commercekings.net) – expert Magento engineering. New store, maintenance, custom development or more sales? [Talk to us](https://commercekings.net).</sub>
+
 **Magento's own Google tags, only after consent – with Google Consent Mode v2.**
 
 - **Nothing reaches Google before consent** – GA4, Google Ads and legacy Universal Analytics.
