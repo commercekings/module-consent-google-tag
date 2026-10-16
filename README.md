@@ -1,8 +1,8 @@
 # Google tags with consent
 
-**Magento's Google tags, only after consent – with Google Consent Mode v2.**
+**Magento's own Google tags, only after consent – with Google Consent Mode v2.**
 
-GA4 · Universal Analytics · Google Ads · Consent Mode v2 · Luma and Hyvä · no settings to learn
+GA4 · Google Ads · legacy Universal Analytics · all four Consent Mode v2 signals · nothing sent to Google before consent · cookies removed on withdrawal · Luma and Hyvä · no new settings – configure Google where Magento already has it
 
 Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Nothing reaches Google before the visitor
 agrees. It works with any consent source and has no settings of its own.
