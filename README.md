@@ -9,19 +9,13 @@ Works with Magento 2.4+ · Luma and Hyvä · PHP 8.1–8.5
 - **Clean withdrawal.** Google cookies are removed; Ads stops on the next page.
 - **No new settings.** Configure Google where Magento already has it.
 
-Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Nothing reaches Google before the visitor
-agrees. It works with any consent source and has no settings of its own.
-
-Supports Luma and Hyvä automatically, including stores that use a different theme per store view.
-Hyvä uses Consent's native purpose API; no RequireJS or extra compatibility package is needed.
-
 ```sh
 composer require commercekings/module-consent-google-tag:^0.1 commercekings/module-consent-vanilla:^0.1
 bin/magento setup:upgrade
 ```
 
-It needs a consent banner: Composer refuses to install it without one (`commercekings/module-consent-vanilla`, or any
-package that provides `commercekings/consent-source`).
+It needs a consent banner – ours or any package that provides `commercekings/consent-source`; Composer refuses to
+install it without one.
 
 ## What it covers
 
@@ -32,9 +26,6 @@ Configure the tags where Magento has them – **Stores > Configuration > Sales >
 | Google GTag > Google Analytics4 | `google_analytics` (Analytics) | `analytics_storage` |
 | Google Analytics (legacy UA) | `google_analytics` (Analytics) | `analytics_storage` |
 | Google GTag > Google AdWords | `google_ads` (Marketing) | `ad_storage`, `ad_user_data`, `ad_personalization` |
-
-Each tag loads only after its purpose is allowed; Consent Mode defaults to `denied`. Withdrawing deletes the
-purpose's Google cookies; withdrawing Google Ads after its tag ran reloads the page.
 
 ## Not covered
 
