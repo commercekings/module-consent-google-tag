@@ -1,6 +1,4 @@
-# CommerceKings_ConsentGoogleTag
-
-**Development status:** first-release feature scope frozen; polishing and verification remain before publication.
+# Google tags with consent
 
 Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Nothing reaches Google before the visitor
 agrees. It works with any consent source and has no settings of its own.
