@@ -9,6 +9,8 @@ Works with Magento 2.4+ · Luma and Hyvä · PHP 8.1–8.5
 - **Clean withdrawal.** Google cookies are removed; Ads stops on the next page.
 - **No new settings.** Configure Google where Magento already has it.
 
+## Installation
+
 ```sh
 composer require commercekings/module-consent-google-tag:^0.1 commercekings/module-consent-vanilla:^0.1
 bin/magento setup:upgrade
