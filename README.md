@@ -1,5 +1,9 @@
 # Google tags with consent
 
+**Magento's Google tags, only after consent – with Google Consent Mode v2.**
+
+GA4 · Universal Analytics · Google Ads · Consent Mode v2 · Luma and Hyvä · no settings to learn
+
 Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Nothing reaches Google before the visitor
 agrees. It works with any consent source and has no settings of its own.
 
