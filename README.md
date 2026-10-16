@@ -4,9 +4,12 @@ Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Noth
 agrees. It works with any consent source and has no settings of its own.
 
 ```sh
-composer require commercekings/module-consent-google-tag:^0.1
+composer require commercekings/module-consent-google-tag:^0.1 commercekings/module-consent-vanilla:^0.1
 bin/magento setup:upgrade
 ```
+
+It needs a consent banner: Composer refuses to install it without one (`commercekings/module-consent-vanilla`, or any
+package that provides `commercekings/consent-source`).
 
 ## What it covers
 

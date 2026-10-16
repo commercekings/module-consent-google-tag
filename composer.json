@@ -11,11 +11,13 @@
     "require": {
         "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0||~8.5.0",
         "magento/framework": "^103.0",
-        "commercekings/module-consent": "^0.1"
+        "commercekings/module-consent": "^0.1",
+        "commercekings/consent-source": "^0.1"
     },
     "suggest": {
         "magento/module-google-gtag": "Native GA4 and Google Ads (gtag) supported by this module",
-        "magento/module-google-analytics": "Legacy Universal Analytics integration supported by this module"
+        "magento/module-google-analytics": "Legacy Universal Analytics integration supported by this module",
+        "commercekings/module-consent-vanilla": "A consent banner. Or any package that provides commercekings/consent-source."
     },
     "autoload": {
         "files": [
