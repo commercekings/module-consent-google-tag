@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {browser, load, provider} = require('../../../module-consent/Test/JavaScript/harness.cjs');
+const {browser, load, provider} = require('./harness.cjs');
 
 function fixture(allowed = false, cookies = ['^_ga', '^_gid', '^_gat']) {
     const b = browser({'commercekings-consent-google-tag-config': {cookies}});

@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\GoogleGtag\Block\Ga $block */
+/** @var \CommerceKings\ConsentGoogleTag\ViewModel\Config $google */
+$google = $block->getData('ck_google');
+$config = json_decode((string)$block->getAnalyticsData(), true);
+?>
+<?php if (!empty($config['googleAnalyticsAvailable']) && !empty($config['pageTrackingData']['measurementId'])): ?>
+    <?php $config['anonymizeIp'] = $google->isIpAnonymized(); ?>
+<script type="application/json" data-ck-google-tag="ga4"><?= /* @noEscape */ json_encode(
+    $config,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+) ?></script>
+<?php endif; ?>

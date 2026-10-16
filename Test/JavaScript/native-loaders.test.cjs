@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const {browser, load} = require('../../../module-consent/Test/JavaScript/harness.cjs');
+const {browser, load} = require('./harness.cjs');
 
 const root = process.env.MAGENTO_ROOT || process.cwd();
 const gaFile = path.join(root, 'vendor/magento/module-google-gtag/view/frontend/web/js/google-analytics.js');

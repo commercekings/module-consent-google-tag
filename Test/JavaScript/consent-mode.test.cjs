@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {browser, load} = require('../../../module-consent/Test/JavaScript/harness.cjs');
+const {browser, load} = require('./harness.cjs');
 
 const SIGNALS = {analytics_storage: 'google_analytics', ad_storage: 'google_ads', ad_user_data: 'google_ads', ad_personalization: 'google_ads'};
 

@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\GoogleAnalytics\Block\Ga $block */
+$accountId = $block->getConfig(\Magento\GoogleAnalytics\Helper\Data::XML_PATH_ACCOUNT);
+?>
+<?php if ($accountId): ?>
+<script type="application/json" data-ck-google-tag="ua"><?= /* @noEscape */ json_encode(
+    [
+        'pageTrackingData' => $block->getPageTrackingData($accountId),
+        'ordersTrackingData' => $block->getOrdersTrackingData(),
+    ],
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+) ?></script>
+<?php endif; ?>

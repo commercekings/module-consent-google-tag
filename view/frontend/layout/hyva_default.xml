@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Hyvä only: replace the inline native loaders with data consumed by our purpose gates. -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="google_gtag_analytics" template="CommerceKings_ConsentGoogleTag::hyva/ga.phtml">
+            <arguments>
+                <argument name="ck_google" xsi:type="object">CommerceKings\ConsentGoogleTag\ViewModel\Config</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="google_analytics" template="CommerceKings_ConsentGoogleTag::hyva/ua.phtml"/>
+        <referenceBlock name="gtag_google_adwords" template="CommerceKings_ConsentGoogleTag::hyva/ads.phtml">
+            <arguments>
+                <argument name="ck_google" xsi:type="object">CommerceKings\ConsentGoogleTag\ViewModel\Config</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="commercekings.consent.google.hyva" template="CommerceKings_ConsentGoogleTag::hyva/scripts.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,17 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\GoogleGtag\ViewModel\Adwords $ads Magento's own block argument */
+$ads = $block->getData('view_model');
+/** @var \CommerceKings\ConsentGoogleTag\ViewModel\Config $google */
+$google = $block->getData('ck_google');
+?>
+<?php if ($ads->isGoogleAdwordsConfigurable() && $ads->isGoogleAdwordsActive() && $ads->getConversionId()): ?>
+<script type="application/json" data-ck-google-tag="ads"><?= /* @noEscape */ json_encode(
+    [
+        'conversionId' => $ads->getConversionId(),
+        'conversionLabel' => $block->getUseConversionLabel() ? $ads->getConversionLabel() : '',
+        'anonymizeIp' => $google->isIpAnonymized(),
+    ],
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+) ?></script>
+<?php endif; ?>

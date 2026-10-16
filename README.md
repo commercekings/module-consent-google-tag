@@ -3,6 +3,9 @@
 Consent for **Magento's own Google tags**, with **Google Consent Mode v2**. Nothing reaches Google before the visitor
 agrees. It works with any consent source and has no settings of its own.
 
+Supports Luma and Hyvä automatically, including stores that use a different theme per store view.
+Hyvä uses Consent's native purpose API; no RequireJS or extra compatibility package is needed.
+
 ```sh
 composer require commercekings/module-consent-google-tag:^0.1 commercekings/module-consent-vanilla:^0.1
 bin/magento setup:upgrade
@@ -29,7 +32,6 @@ purpose's Google cookies; withdrawing Google Ads after its tag ran reloads the p
 - **Legacy Google AdWords** (Google API > Google Analytics > Google AdWords) is not gated – keep it off and use
   Google GTag > Google AdWords.
 - **Google Tag Manager** and tags pasted into the theme load without consent.
-- **Hyvä themes**: Google tag loaders are not gated yet – keep the Google settings off on Hyvä store views.
 
 Check the live result with Google's [Tag Assistant](https://developers.google.com/tag-platform/security/guides/consent-debugging).
 

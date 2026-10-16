@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$scripts = [
+    'CommerceKings_ConsentGoogleTag::js/consent-mode-core.js',
+    'CommerceKings_ConsentGoogleTag::js/analytics-core.js',
+    'CommerceKings_ConsentGoogleTag::js/ads-core.js',
+    'CommerceKings_ConsentGoogleTag::js/hyva.js',
+];
+?>
+<?php foreach ($scripts as $script): ?>
+<script src="<?= $escaper->escapeUrl($block->getViewFileUrl($script)) ?>" defer></script>
+<?php endforeach; ?>

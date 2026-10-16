@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Gate native Hyvä GA4, legacy Analytics and Google Ads through the shared consent logic, without RequireJS or a separate package. Preserve Magento tracking data, independent purposes and single purchase/conversion execution; cover the templates and real provider/Vanilla lifecycle.
 - Requires a consent banner (`commercekings/consent-source`, provided by `module-consent-vanilla`): without one
   Google tags could never load.
 - Ignore malformed custom cookie patterns individually so valid cleanup, Analytics disable flags and Ads withdrawal reload still run; cover denied startup and withdrawal with regression tests.

@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace CommerceKings\ConsentGoogleTag\ViewModel;
 
 use CommerceKings\Consent\Api\PurposeRegistryInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Settings for the JS gates and Google Consent Mode, plus the Consent Mode defaults: inline in <head>,
- * so they are in dataLayer before Magento's Google loaders (RequireJS) push anything.
+ * so they are in dataLayer before the Luma or Hyvä Google loaders push anything.
  */
 class Config implements ArgumentInterface
 {
@@ -18,8 +20,15 @@ class Config implements ArgumentInterface
     /** @param array<string, string> $signals Google consent signal => purpose (di.xml) */
     public function __construct(
         private readonly PurposeRegistryInterface $purposes,
-        private readonly array $signals = []
+        private readonly array $signals = [],
+        private readonly ?ScopeConfigInterface $scopeConfig = null
     ) {
+    }
+
+    /** Magento's "Anonymize IP" for gtag (Sales > Google API > Google GTag), for the Hyvä loaders. */
+    public function isIpAnonymized(): bool
+    {
+        return (bool)$this->scopeConfig?->isSetFlag('google/gtag/anonymize', ScopeInterface::SCOPE_STORE);
     }
 
     /** A Google tag is on in Magento (one of the purposes is active). */
