@@ -29,6 +29,7 @@ purpose's Google cookies; withdrawing Google Ads after its tag ran reloads the p
 - **Legacy Google AdWords** (Google API > Google Analytics > Google AdWords) is not gated – keep it off and use
   Google GTag > Google AdWords.
 - **Google Tag Manager** and tags pasted into the theme load without consent.
+- **Hyvä themes**: Google tag loaders are not gated yet – keep the Google settings off on Hyvä store views.
 
 Check the live result with Google's [Tag Assistant](https://developers.google.com/tag-platform/security/guides/consent-debugging).
 
