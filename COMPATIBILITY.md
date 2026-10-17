@@ -4,10 +4,13 @@ The first-release runtime target is Magento Open Source 2.4.9 with PHP 8.5, Luma
 The Composer PHP range is a dependency constraint, not a claim that every Magento/PHP
 combination has passed runtime testing.
 
+**Minimum: Magento Open Source 2.4.5**, enforced by `magento/framework: ^103.0.5`. This package gates
+Magento's `Magento_GoogleGtag` (GA4 and gtag Google Ads), which Magento added in 2.4.5.
+
 | Magento Open Source | PHP | Runtime verification |
 | --- | --- | --- |
 | 2.4.9 | 8.5 | Passed locally: Composer, PHP lint, DI compilation and package unit tests |
-| Other Magento releases | 8.1–8.4 | Unverified; use a matching Magento dependency set and services |
+| 2.4.5–2.4.8 | 8.1–8.4 | Unverified; use a matching Magento dependency set and services |
 
 Hyvä default theme 1.5.3 was verified locally alongside a Luma store view on the same sandbox:
 43 live browser checks with all external traffic intercepted, including no Google request before consent,

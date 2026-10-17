@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Requires Magento 2.4.5 or later (`magento/framework ^103.0.5`): Magento's GA4/gtag module
+  (`Magento_GoogleGtag`) was added in 2.4.5.
 - Gate native Hyvä GA4, legacy Analytics and Google Ads through the shared consent logic, without RequireJS or a separate package. Preserve Magento tracking data, independent purposes and single purchase/conversion execution; cover the templates and real provider/Vanilla lifecycle.
 - Requires a consent banner (`commercekings/consent-source`, provided by `module-consent-vanilla`): without one
   Google tags could never load.
