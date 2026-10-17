@@ -2,7 +2,7 @@
 
 Works with Magento 2.4.5+ · Luma and Hyvä · PHP 8.1–8.5
 
-[![License](https://badgen.net/github/license/commercekings/module-consent-google-tag)](LICENSE) [![Release](https://badgen.net/github/release/commercekings/module-consent-google-tag)](https://github.com/commercekings/module-consent-google-tag/releases) [![Checks](https://badgen.net/github/checks/commercekings/module-consent-google-tag/main?label=checks)](https://github.com/commercekings/module-consent-google-tag/actions)
+[![License](https://badgen.net/github/license/commercekings/module-consent-google-tag)](LICENSE) [![Release](https://badgen.net/github/release/commercekings/module-consent-google-tag)](https://github.com/commercekings/module-consent-google-tag/releases) [![Checks](https://github.com/commercekings/module-consent-google-tag/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/commercekings/module-consent-google-tag/actions/workflows/checks.yml)
 
 **Magento's own Google tags, only after consent – with Google Consent Mode v2.**
 
