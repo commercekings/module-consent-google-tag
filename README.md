@@ -31,7 +31,7 @@ Configure the tags where Magento has them – **Stores > Configuration > Sales >
 | Google Analytics (legacy UA) | `google_analytics` (Analytics) | `analytics_storage` |
 | Google GTag > Google AdWords | `google_ads` (Marketing) | `ad_storage`, `ad_user_data`, `ad_personalization` |
 
-## Not covered
+## Limitations
 
 - **Legacy Google AdWords** (Google API > Google Analytics > Google AdWords) is not gated – keep it off and use
   Google GTag > Google AdWords.
