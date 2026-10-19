@@ -50,6 +50,12 @@ their own. You are responsible for your store's privacy: what you collect, the w
 and whether your setup meets the laws that apply to you (e.g. GDPR, ePrivacy, email marketing rules). Get legal advice
 if you are unsure.
 
+## Tested (as of 0.1.0)
+
+- **Automated tests:** 10 unit and 34 JavaScript tests (GA4, Google Ads, legacy Universal Analytics, Consent Mode v2, Hyvä) (unit and JavaScript tests run on every push); 94.7% line coverage by the unit tests.
+- **Install:** a fresh install of every CommerceKings package from GitHub on an empty Magento database, verified.
+- **Not tested:** live in Google Tag Assistant, and end to end in a browser.
+
 ---
 
 **Need it installed, set up or customized?** **[Get in touch →](https://commercekings.net)**
