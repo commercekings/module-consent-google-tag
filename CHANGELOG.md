@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 - 2026-10-19
 
 - Requires Magento 2.4.5 or later (`magento/framework ^103.0.5`): Magento's GA4/gtag module
   (`Magento_GoogleGtag`) was added in 2.4.5.
