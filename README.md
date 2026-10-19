@@ -39,6 +39,12 @@ Configure the tags where Magento has them – **Stores > Configuration > Sales >
 
 Check the live result with Google's [Tag Assistant](https://developers.google.com/tag-platform/security/guides/consent-debugging).
 
+## Tested (as of 0.1.0)
+
+- **Automated tests:** 10 unit and 34 JavaScript tests (GA4, Google Ads, legacy Universal Analytics, Consent Mode v2, Hyvä) (unit and JavaScript tests run on every push); 94.7% line coverage by the unit tests.
+- **Install:** a fresh install of every CommerceKings package from GitHub on an empty Magento database, verified.
+- **Not tested:** live in Google Tag Assistant, and end to end in a browser.
+
 ## More
 
 [How it works](docs/how-it-works.md) · [Compatibility](COMPATIBILITY.md) · [Changes](CHANGELOG.md)
@@ -49,12 +55,6 @@ These modules help you ask for, record and respect your shoppers' choices – th
 their own. You are responsible for your store's privacy: what you collect, the wording you show, your privacy policy
 and whether your setup meets the laws that apply to you (e.g. GDPR, ePrivacy, email marketing rules). Get legal advice
 if you are unsure.
-
-## Tested (as of 0.1.0)
-
-- **Automated tests:** 10 unit and 34 JavaScript tests (GA4, Google Ads, legacy Universal Analytics, Consent Mode v2, Hyvä) (unit and JavaScript tests run on every push); 94.7% line coverage by the unit tests.
-- **Install:** a fresh install of every CommerceKings package from GitHub on an empty Magento database, verified.
-- **Not tested:** live in Google Tag Assistant, and end to end in a browser.
 
 ---
 
